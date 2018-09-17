@@ -70,3 +70,80 @@ class SourceFile:
 			raise RuntimeError('Contents not set.') 
 		with codecs.open(self.file_name, 'w', encoding=self.encoding) as outp:
 			outp.write(self.contents)
+			
+class Source:
+	def __init__(self):
+		self.prefix = None
+		self.header = None
+		self.suffix = None
+	
+	@property
+	def prefix(self):
+		return self._prefix
+	
+	@prefix.setter
+	def set_prefix(self, prefix):
+		self._prefix = prefix
+	
+	@property
+	def header(self):
+		return self._header
+	
+	@header.setter
+	def set_header(self, header):
+		self._header = header
+
+	@property
+	def suffix(self):
+		return self._suffix
+	
+	@suffix.setter
+	def set_suffix(self, suffix):
+		self._suffix = suffix
+
+	def __str__(self):
+		s = ''
+		if not self.prefix is None:
+			s = s + self.prefix
+		if not self.header is None:
+			s = s + self.header
+		if not self.suffix is None:
+			s = s + self.suffix
+		return s
+	
+class StringStream:
+	
+	def __init__(self, text):
+		self._text = text
+		self._offset = 0
+	
+	def has_more(self):
+		return self._offset < len(self._text)
+	
+	def getc(self):
+		if self.has_more():
+			c = self._text[self._offset]
+			self._offset = self._offset + 1
+			return c 
+		else:
+			return None
+	
+	def ungetc(self):
+		if (self._offset > 0):
+			self._offset = self._offset - 1
+
+class SourceParser:
+	
+	def parse_source(self, src):
+		return self.parse_text(src.contents)
+	
+	def parse_text(self, text):
+		return None
+
+class CSourceParser(SourceParser):
+	
+	def _extract_prefix(self, src):
+		None
+	
+	def parse_text(self, text):
+		None

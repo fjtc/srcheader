@@ -68,7 +68,6 @@ class TestSourceFile(unittest.TestCase):
 		self.assertFalse(src.has_contents())		
 		src.contents = 'testing'
 		self.assertTrue(src.has_contents())		
-		
 
 if __name__ == '__main__':
 	unittest.main()

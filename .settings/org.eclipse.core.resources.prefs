@@ -1,2 +1,4 @@
 eclipse.preferences.version=1
-encoding//test/core_file_test.py=utf-8
+encoding//src/core/file.py=utf-8
+encoding//test/core_file_SourceFileTest.py=utf-8
+encoding//test/core_file_StringStreamTest.py=utf-8
